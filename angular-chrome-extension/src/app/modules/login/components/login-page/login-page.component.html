@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-center bg-white">
+            <img src="logo-title" src="/assets/favicon.png">
+        </div>
+        <div class="login-form-wrapper">
+            <form #loginForm="ngForm" class="text-left" (keydown.enter)="login()" validate>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input [(ngModel)]="loginname" class="form-control" type="text" name="username" #username="ngModel"
+                        required maxlength="100" />
+                    <div class="invalid-feedback" *ngIf="username.invalid && (username.dirty || username.touched)">
+                        <div>Please enter valid username.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input [(ngModel)]="pass" class="form-control password-input" type="password" name="password"
+                            #password="ngModel" maxlength="100" required />
+                        <div class="input-group-append">
+                            <span class="input-group-text password-button">
+                                <i class="fa fa-eye" showHide></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <div>Please enter valid password.</div>
+                    </div>
+                </div>
+
+                <div class="form-group is-invalid" *ngIf="isLoginInvalid">
+                    <div class="invalid-feedback d-block">
+                        <div>{{error}}</div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-block mt-3" (click)="login()">
+                    Sign In
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

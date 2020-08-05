@@ -1,7 +1,7 @@
 {
-    "name": "Angular Extension Demo",
+    "name": "Vault passwords",
     "version": "1.0",
-    "description": "Build an Extension with Angular 10",
+    "description": "Vault passwords ex",
     "manifest_version": 2,
     "permissions": [
         "activeTab",
