@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="title-text">Connect a device</div>
+        </div>
+        <div class="col-sm-12 mb-2">
+            <div>
+                <div class="info-text-container">
+                    Enter the code displayed in the activation screen.
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 mt-2">
+            <!-- <input type="text" placeholder="Enter code" style="width: 100%;" [(ngModel)]="deviceCode">
+        </div>
+        <div class="col-sm-12 mt-2">
+            <button class="btn btn-primary mb-2" (click)="validateDeviceToken()">NEXT <span
+                    class="right-arrow">&gt;</span></button> -->
+            <form #deviceCodeForm="ngForm" class="text-left" (keydown.enter)="validateDeviceToken()" validate>
+                <div class="form-group">
+                    <input [(ngModel)]="deviceCode" class="form-control" type="text" name="code"
+                        placeholder="Enter code" #code="ngModel" required minlength="6" maxlength="6" />
+                    <div class="invalid-feedback" *ngIf="code.invalid && (code.dirty || code.touched)">
+                        <div>Please enter valid code.</div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary btn-block mt-3" (click)="validateDeviceToken()">
+                    Sign In <span class="right-arrow">&gt;</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

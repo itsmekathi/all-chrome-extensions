@@ -8,10 +8,12 @@ html {
 }
 
 body {
+  width: 360px;
+  height: 640px;
   background: #fbfbfd;
   height: 100%;
   overflow: hidden;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Segoe UI';
 }
 
 body .ui-widget {
@@ -22,7 +24,7 @@ body .ui-widget {
 
 
 .btn {
-  border-radius: 0.25rem !important;
+  border-radius: 0px;
 
   &.btn-link:hover,
   &.btn-link:focus {
@@ -37,6 +39,30 @@ a {
     text-decoration: none;
     color: $color-primary;
   }
+}
+
+.btn-primary {
+  width: 100%;
+  height: 56px;
+  background-color: #14CB43;
+  border-color: #14CB43;
+}
+
+.btn-primary.focus,
+.btn-primary:focus,
+.btn-primary:hover {
+  color: #fff;
+  background-color: #14CB43;
+  border-color: #14CB43;
+  box-shadow: 0 0 0 0.2rem rgba(20, 230, 67, 0.5);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active {
+  color: #fff;
+  background-color: #14CB43;
+  border-color: #14CB43;
+  box-shadow: 0 0 0 0.2rem rgba(20, 230, 67, 0.5);
 }
 
 .btn-secondary {
@@ -61,40 +87,61 @@ a {
 
 
 .input-group-text.invalid-border {
-    border-color: #ff1616;
+  border-color: #ff1616;
 }
-.password-input {
-    border-right: 0;
-}
-.password-button {
-    background-color: transparent;
-    border-color: inherit;
 
-    i {
-        cursor: pointer;
-    }
+.password-input {
+  border-right: 0;
+}
+
+.password-button {
+  background-color: transparent;
+  border-color: inherit;
+
+  i {
+    cursor: pointer;
+  }
 }
 
 .input-group-append {
-    border-color: #ced4da;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-color: #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.input-group > .input-group-append > .btn,
-.input-group > .input-group-append > .btn:hover {
-    border-radius: 0 0.25rem 0.25rem 0;
-    font-size: 12px;
-    color: #aaaaaa;
-    border-left: none;
-    border-color: #ced4da;
+.input-group>.input-group-append>.btn,
+.input-group>.input-group-append>.btn:hover {
+  border-radius: 0 0.25rem 0.25rem 0;
+  font-size: 12px;
+  color: #aaaaaa;
+  border-left: none;
+  border-color: #ced4da;
 }
 
-.input-group
-    > .input-group-append
-    > .btn-secondary:not(:disabled):not(.disabled):hover,
+.input-group>.input-group-append>.btn-secondary:not(:disabled):not(.disabled):hover,
 .btn-secondary:not(:disabled):not(.disabled):active {
-    border-radius: 0 0.25rem 0.25rem 0;
-    background-color: transparent;
-    color: #aaaaaa;
-    border-color: #ced4da;
+  border-radius: 0 0.25rem 0.25rem 0;
+  background-color: transparent;
+  color: #aaaaaa;
+  border-color: #ced4da;
+}
+
+.title-text {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.info-text-container {
+  font-size: 18px;
+  text-align: center;
+}
+
+.right-arrow {
+  float: right;
+  right: 10px;
+}
+
+.invalid-feedback {
+  display: inline;
 }
