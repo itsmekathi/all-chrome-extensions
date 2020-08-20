@@ -21,6 +21,7 @@ import { SharedModule } from './shared/shared.module';
     services.PageLoaderService,
     services.UserService,
     services.ApiService,
+    services.StorageService
   ],
   bootstrap: [AppComponent],
 })

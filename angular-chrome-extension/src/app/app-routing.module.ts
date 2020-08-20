@@ -5,12 +5,13 @@ import { MainComponent } from './components/main-component/main.component';
 const routes: Routes = [
   // {
   //   path: '',
-  //   component: MainComponent,
+  //   loadChildren: () =>
+  //     import('./modules/login/login.module').then((m) => m.LoginModule),
   // },
   {
     path: '',
     loadChildren: () =>
-      import('./modules/login/login.module').then((m) => m.LoginModule),
+      import('./modules/storage/storage.module').then((m) => m.StorageModule),
   },
 ];
 

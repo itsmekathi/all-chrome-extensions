@@ -1,0 +1,28 @@
+<div class="container-fulid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Storage Service Demo</h2>
+        </div>
+        <div class="col-sm-12">
+            <h2>Add value to storage</h2>
+            <div class="col-sm-6">
+                <label>Enter Key: </label> <input type="text" name="key" [(ngModel)]="key">
+                <label>Enter value: </label><input type="text" name="value" [(ngModel)]="value">
+            </div>
+            <div class="col-sm-6">
+                <button (click)="addToStorage()">Add to storage</button>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <h2>Fetch value from storage</h2>
+            <div class="col-sm-6">
+                <label>Enter Key: </label> <input type="text" name="keytoLookup" [(ngModel)]="keytoLookup">
+                <br>
+                <p *ngIf="fetchedValue">Value is : {{fetchedValue | json}}</p>
+            </div>
+            <div class="col-sm-6">
+                <button (click)="getFromStorage()">Get From storage</button>
+            </div>
+        </div>
+    </div>
+</div>
