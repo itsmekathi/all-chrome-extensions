@@ -1,7 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApiService, PageLoaderService } from 'src/app/shared/services';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import {
+  ApiService,
+  PageLoaderService,
+  UserService
+} from '../../../../shared/services';
 
 @Component({
   selector: 'app-connect-device',
@@ -14,7 +18,8 @@ export class ConnectDevicePageComponent {
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private pageloaderService: PageLoaderService
+    private pageloaderService: PageLoaderService,
+    private userService: UserService
   ) {}
   public showSuccessPage(): void {}
 
@@ -23,8 +28,7 @@ export class ConnectDevicePageComponent {
       this.pageloaderService.showPageLoader();
       try {
         const resp = await this.apiService.getBaseAPIUrl(this.deviceCode);
-        console.log(resp);
-        // save it to chrome storage
+        this.userService.setOrganizationUrl(resp);
         this.pageloaderService.hidePageLoader();
         this.router.navigate(['success']);
       } catch (error) {
