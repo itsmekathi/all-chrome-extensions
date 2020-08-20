@@ -9,8 +9,7 @@ export class StorageService implements IStorageService {
       chrome.storage.local.get(
         [key],
         (result: { [key: string]: any }): void => {
-          console.log('value currently is ' + result.key);
-          resolve(result);
+          resolve(result ? result[key] : null);
         }
       );
     });
@@ -19,16 +18,12 @@ export class StorageService implements IStorageService {
     return new Promise((resolve, reject) => {
       const object = {};
       object[key] = value;
-      chrome.storage.local.set(object, () => {
-        console.log('Value is set to ' + value);
-      });
+      chrome.storage.local.set(object, () => {});
     });
   }
   remove(key: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      chrome.storage.local.remove(key, () => {
-        console.log('Key: ' + key + ' removed from storage');
-      });
+      chrome.storage.local.remove(key, () => {});
     });
   }
   exist(key: string): Promise<boolean> {
@@ -45,7 +40,6 @@ export class StorageService implements IStorageService {
     // Clear all values for now
     return new Promise((resolve, reject) => {
       chrome.storage.local.clear(() => {
-        console.log('All items were removed from local storage');
         resolve();
       });
     });

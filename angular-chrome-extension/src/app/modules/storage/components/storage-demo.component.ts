@@ -22,4 +22,14 @@ export class StorageDemoComponent {
       console.log(error);
     }
   }
+  async removeFromStorage(): Promise<void> {
+    await this.storageService.remove(this.keytoLookup);
+  }
+
+  async checkIfKeyExists(): Promise<void> {
+    this.fetchedValue = await this.storageService.exist(this.keytoLookup);
+  }
+  async clearStorage(): Promise<void> {
+    await this.storageService.clear();
+  }
 }

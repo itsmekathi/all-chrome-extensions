@@ -1,4 +1,4 @@
-<div class="container-fulid">
+<div class="container">
     <div class="row">
         <div class="col-sm-12">
             <h2>Storage Service Demo</h2>
@@ -10,7 +10,7 @@
                 <label>Enter value: </label><input type="text" name="value" [(ngModel)]="value">
             </div>
             <div class="col-sm-6">
-                <button (click)="addToStorage()">Add to storage</button>
+                <button class="btn btn-primary" (click)="addToStorage()">Add to storage</button>
             </div>
         </div>
         <div class="col-sm-12">
@@ -21,8 +21,17 @@
                 <p *ngIf="fetchedValue">Value is : {{fetchedValue | json}}</p>
             </div>
             <div class="col-sm-6">
-                <button (click)="getFromStorage()">Get From storage</button>
+                <button class="btn btn-primary" (click)="getFromStorage()">Get From storage</button>
             </div>
+            <div class="col-sm-6">
+                <button class="btn btn-primary" (click)="removeFromStorage()">Remove From storage</button>
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-secondary" (click)="checkIfKeyExists()">Exists check</button>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <button class="btn btn-danger" (click)="clearStorage()">Clear storage</button>
         </div>
     </div>
 </div>
