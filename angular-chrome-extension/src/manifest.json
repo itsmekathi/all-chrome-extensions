@@ -9,12 +9,6 @@
         "storage",
         "https://*/"
     ],
-    "background": {
-        "scripts": [
-            "background.js",
-            "runtime.js"
-        ]
-    },
     "page_action": {
         "default_popup": "index.html",
         "default_icon": "assets/favicon.png"
