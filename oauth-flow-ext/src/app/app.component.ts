@@ -23,7 +23,7 @@ export class AppComponent {
         {
           url: `https://github.com/login/oauth/authorize?client_id=${clientId}&login=${encodeURI(
             this.loginName
-          )}redirectURI=${encodeURI(this.redirectURI)}`,
+          )}&redirectURI=${encodeURI(this.redirectURI)}`,
           interactive: true,
         },
         (redirectURL) => {

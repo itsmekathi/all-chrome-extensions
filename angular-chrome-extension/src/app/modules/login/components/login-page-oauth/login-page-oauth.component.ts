@@ -9,39 +9,47 @@ import { UserService } from '../../../../shared/services';
   templateUrl: './login-page-oauth.component.html',
 })
 export class LoginPageOauthComponent implements OnInit {
-  userName = '';
+  loginname = '';
+  redirectURI = chrome.identity.getRedirectURL() + 'auth';
+  isLoginInvalid = false;
+  error: string;
 
   constructor(
     private userService: UserService,
     private router: Router,
     private zone: NgZone
   ) {}
-  async ngOnInit(): Promise<void> {
-    // Initiate checking storage and route to other pages.
+  ngOnInit(): void {
+    this.userService.isGithubOAUTHDone().then((val) => {
+      if (val) {
+        console.log('Actual login - success page');
+        this.router.navigate(['login', 'success']);
+      }
+    });
   }
 
   public login(): void {
-    const redirectURI = chrome.identity.getRedirectURL() + 'auth';
     try {
       chrome.identity.launchWebAuthFlow(
         {
           url: `https://github.com/login/oauth/authorize?client_id=${GITHUB_OAUTH_CLIENTID}&login=${encodeURI(
-            this.userName
-          )}redirectURI=${encodeURI(redirectURI)}`,
+            this.loginname
+          )}&redirectURI=${encodeURI(this.redirectURI)}`,
           interactive: true,
         },
         (res) => {
-          const urlParams = new URLSearchParams(res);
-          const myParam = urlParams.get('code');
           console.log(res);
+          const authCode = new URL(res).searchParams.get('code');
           this.zone.run(() => {
-            this.router.navigate(['success']);
+            this.userService.setGithubOAUTHCode(authCode);
+            this.router.navigate(['login', 'success']);
           });
         }
       );
     } catch (err) {
       this.zone.run(() => {
-        this.router.navigate(['failure']);
+        this.isLoginInvalid = true;
+        // this.router.navigate(['login', 'failure']);
       });
     }
   }

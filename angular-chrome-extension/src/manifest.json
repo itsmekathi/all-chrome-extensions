@@ -1,16 +1,26 @@
 {
     "name": "Vault passwords",
     "version": "1.0",
-    "description": "Vault passwords ex",
+    "description": "Vault passwords extension",
     "manifest_version": 2,
     "permissions": [
+        "identity",
+        "tabs",
+        "notifications",
+        "http://*/",
+        "https://*/",
         "activeTab",
         "webNavigation",
-        "storage",
-        "https://*/"
+        "storage"
     ],
-    "page_action": {
-        "default_popup": "index.html",
-        "default_icon": "assets/favicon.png"
-    }
+    "browser_action": {
+        "default_icon": "favicon.ico",
+        "default_popup": "index.html"
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "web_accessible_resources": [
+        "assets/css/*",
+        "assets/js/*",
+        "assets/fonts/*"
+    ]
 }

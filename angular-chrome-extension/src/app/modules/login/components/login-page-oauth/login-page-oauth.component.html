@@ -1,11 +1,33 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <div class="col-sm-12">
-            <h2>Authenticate with github</h2>
+        <div class="col-sm-12 text-center bg-white image-container" style="margin-top: 30px;">
+            <img src="logo-title" src="/assets/favicon.png">
         </div>
-        <div class="col-sm-12">
-            <input type="text" name="loginName" id="loginName" required minlength="5" [(ngModel)]="userName">
-            <button class="btn btn-primary" (click)="login">Login</button>
+        <div class="col-sm-12 info-text-container mt-2">
+            Sign in to continue
+        </div>
+        <div class="col-sm-12 mt-4">
+            <div class="login-form-wrapper">
+                <form #loginForm="ngForm" class="text-left" (keydown.enter)="login()" validate>
+                    <div class="form-group">
+                        <input [(ngModel)]="loginname" class="form-control" type="text" name="username"
+                            placeholder="Username" #username="ngModel" required maxlength="100" />
+                        <div class="invalid-feedback" *ngIf="username.invalid && (username.dirty || username.touched)">
+                            <div>Please enter valid username.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group is-invalid" *ngIf="isLoginInvalid">
+                        <div class="invalid-feedback d-block">
+                            <div>{{error}}</div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-block mt-3" (click)="login()">
+                        Sign In
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

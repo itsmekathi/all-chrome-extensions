@@ -1,12 +1,17 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12 text-center bg-white">
             <h2>Configured values are</h2>
         </div>
-        <div class="col-md-2">
+        <div class="col-sm-12">
             <ul>
                 <li>Vault base URL: {{vaultUrl}}</li>
+                <li>Github AUTH code: {{githubAuthCode}}</li>
             </ul>
+        </div>
+        <div class="col-sm-12">
+            <h2>Actions</h2>
+            <button (click)="logoutUser()">Logout</button>
         </div>
     </div>
 </div>
