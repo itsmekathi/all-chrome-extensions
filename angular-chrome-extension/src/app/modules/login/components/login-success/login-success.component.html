@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-sm-12 text-center bg-white">
             <h2>Configured values are</h2>
@@ -9,9 +9,28 @@
                 <li>Github AUTH code: {{githubAuthCode}}</li>
             </ul>
         </div>
+        <div class="col-sm-12 info-text-container mt-2">
+            Add JWT Token
+        </div>
+        <div class="col-sm-12 mt-4">
+            <div class="login-form-wrapper">
+                <form #JWTTokenForm="ngForm" class="text-left" (keydown.enter)="addToken()" validate>
+                    <div class="form-group">
+                        <input [(ngModel)]="token" class="form-control" type="text" name="userToken"
+                            placeholder="Auth token" #userToken="ngModel" required minlength="10" maxlength="100" />
+                        <div class="invalid-feedback"
+                            *ngIf="userToken.invalid && (userToken.dirty || userToken.touched)">
+                            <div>Please enter valid token.</div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block mt-3" (click)="addToken()">
+                        Add Token
+                    </button>
+                </form>
+            </div>
+        </div>
         <div class="col-sm-12">
-            <h2>Actions</h2>
-            <button (click)="logoutUser()">Logout</button>
+            <button type="button" class="btn btn-primary btn-block mt-3" (click)="logoutUser()">Logout</button>
         </div>
     </div>
 </div>

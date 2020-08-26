@@ -16,6 +16,13 @@ const routes: Routes = [
       import('./modules/login/login.module').then((m) => m.LoginModule),
   },
   {
+    path: 'credential-search',
+    loadChildren: () =>
+      import('./modules/credential-search/credential-search.module').then(
+        (m) => m.CredentialSearchModule
+      ),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./modules/storage/storage.module').then((m) => m.StorageModule),

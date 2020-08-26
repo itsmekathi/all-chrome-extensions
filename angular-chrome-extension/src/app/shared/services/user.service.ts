@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { GITHUB_OAUTH_CODE, ORGANIZATION_BASE_URI } from '../constants';
+import {
+  GITHUB_OAUTH_CODE,
+  ORGANIZATION_BASE_URI,
+  AUTH_TOKEN,
+} from '../constants';
 import { StorageService } from './storage.service';
 
 @Injectable()
@@ -30,6 +34,16 @@ export class UserService {
   }
   public async isGithubOAUTHDone(): Promise<boolean> {
     return await this.storageService.exist(GITHUB_OAUTH_CODE);
+  }
+
+  public async setAuthToken(value: string): Promise<string> {
+    return await this.storageService.set(AUTH_TOKEN, value);
+  }
+  public async getAuthToken(): Promise<string> {
+    return await this.storageService.get(AUTH_TOKEN);
+  }
+  public async isAuthTokenPresent(): Promise<string> {
+    return await this.storageService.get(AUTH_TOKEN);
   }
 
   public async isLogged(): Promise<boolean> {

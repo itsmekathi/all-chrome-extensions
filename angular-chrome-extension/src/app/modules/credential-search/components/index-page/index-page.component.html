@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 mt-4">
+            <div class="login-form-wrapper">
+                <form #searchForm="ngForm" class="text-left" (keydown.enter)="searchCredentials()" validate>
+                    <div class="form-group">
+                        <input [(ngModel)]="searchText" class="form-control" type="text" name="searchText"
+                            placeholder="Search Text" #userSearchText="ngModel" required minlength="3"
+                            maxlength="100" />
+                        <div class="invalid-feedback"
+                            *ngIf="userSearchText.invalid && (userSearchText.dirty || userSearchText.touched)">
+                            <div>Please enter valid search text.</div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block mt-3" (click)="searchCredentials()">
+                        <i class="pi pi-search button-icon-left"></i> Search
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <app-credential-result-page [searchResults]="searchResults"></app-credential-result-page>
+        </div>
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary btn-block mt-3" (click)="logoutUser()"> <i
+                    class="pi pi-sign-out button-icon-left"></i>Logout</button>
+        </div>
+    </div>
+</div>
