@@ -17,7 +17,7 @@
                 <form #JWTTokenForm="ngForm" class="text-left" (keydown.enter)="addToken()" validate>
                     <div class="form-group">
                         <input [(ngModel)]="token" class="form-control" type="text" name="userToken"
-                            placeholder="Auth token" #userToken="ngModel" required minlength="10" maxlength="100" />
+                            placeholder="Auth token" #userToken="ngModel" required minlength="10" />
                         <div class="invalid-feedback"
                             *ngIf="userToken.invalid && (userToken.dirty || userToken.touched)">
                             <div>Please enter valid token.</div>

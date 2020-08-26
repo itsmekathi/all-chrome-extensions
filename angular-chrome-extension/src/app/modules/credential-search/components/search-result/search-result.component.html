@@ -1,5 +1,5 @@
 <div class="row search-result-container">
-    <div class="col-md-8">
+    <div class="col-sm-8">
         <div class="row">
             <div class="col-sm-2">
                 <div class="item-icon small-icon">
@@ -9,19 +9,19 @@
                     <i class="big-icon fa fa-lock"></i>
                 </div>
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
                 <div class="account-name">
-                    {{ myCredential.siteUrl }}
+                    {{ myCredential.name }}
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-sm-4">
         <div class="icon-container">
-            <span class="action-icon"><i class="pi pi-arrow-circle-up" title="Launch"></i></span>
+            <span class="action-icon" (click)="openNewTab()"><i class="pi pi-arrow-circle-up" title="Launch"></i></span>
             <span class=" action-icon pl-2" (click)="credentialMenu.toggle($event)"><i class="pi pi-copy"
                     title="Copy"></i></span>
-            <p-menu #credentialMenu [popup]="true" [model]="items"  appendTo="body"  class="text-left"></p-menu>
+            <p-menu #credentialMenu [popup]="true" [model]="items" appendTo="body" class="text-left"></p-menu>
             <span class="pl-2 action-icon"><i class="pi pi-user-edit" title="Edit"></i> </span>
         </div>
     </div>

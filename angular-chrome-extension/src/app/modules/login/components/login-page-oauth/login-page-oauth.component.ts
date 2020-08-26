@@ -14,6 +14,8 @@ export class LoginPageOauthComponent implements OnInit {
   isLoginInvalid = false;
   error: string;
 
+  dummyUrlResponse = 'https://github.com?code=asdfkasdhfkjasdhfkjasdf';
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -39,7 +41,9 @@ export class LoginPageOauthComponent implements OnInit {
         },
         (res) => {
           console.log(res);
-          const authCode = new URL(res).searchParams.get('code');
+          const authCode = new URL(
+            res || this.dummyUrlResponse
+          ).searchParams.get('code');
           this.zone.run(() => {
             this.userService.setGithubOAUTHCode(authCode);
             this.router.navigate(['login', 'success']);

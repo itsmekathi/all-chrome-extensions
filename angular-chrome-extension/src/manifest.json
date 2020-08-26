@@ -22,5 +22,15 @@
         "assets/css/*",
         "assets/js/*",
         "assets/fonts/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content-script.js"
+            ]
+        }
     ]
 }

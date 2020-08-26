@@ -36,4 +36,12 @@ export class SearchResultComponent {
   copyPasswordToClipboard(): void {
     this.clipboard.copy(this.myCredential.password);
   }
+  openNewTab(): void {
+    chrome.tabs.create(
+      { url: this.myCredential.siteUrl, active: true },
+      (newTab) => {
+        chrome.tabs.sendMessage(newTab.id, this.myCredential);
+      }
+    );
+  }
 }
