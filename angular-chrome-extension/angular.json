@@ -31,6 +31,7 @@
               "src/assets",
               "src/assets/favicon.png",
               "src/manifest.json",
+              "src/jquery-3.5.1.js",
               "src/content-script.js"
             ],
             "styles": [

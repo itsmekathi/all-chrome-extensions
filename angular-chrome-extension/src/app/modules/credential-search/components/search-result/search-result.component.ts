@@ -2,6 +2,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { Component, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { CredentialModel } from 'src/app/shared/models/credential.model';
+import { StorageService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-search-result',
@@ -11,7 +12,10 @@ import { CredentialModel } from 'src/app/shared/models/credential.model';
 export class SearchResultComponent {
   @Input() myCredential: CredentialModel;
   public items: MenuItem[];
-  constructor(private clipboard: Clipboard) {
+  constructor(
+    private clipboard: Clipboard,
+    private storageService: StorageService
+  ) {
     this.items = [
       {
         label: '',
@@ -37,11 +41,11 @@ export class SearchResultComponent {
     this.clipboard.copy(this.myCredential.password);
   }
   openNewTab(): void {
+    this.storageService.set('current_credentials', this.myCredential);
+
     chrome.tabs.create(
       { url: this.myCredential.siteUrl, active: true },
-      (newTab) => {
-        chrome.tabs.sendMessage(newTab.id, this.myCredential);
-      }
+      (newTab) => {}
     );
   }
 }

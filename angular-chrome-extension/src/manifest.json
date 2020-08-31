@@ -29,7 +29,7 @@
                 "<all_urls>"
             ],
             "js": [
-                "content-script.js"
+                "jquery-3.5.1.js", "content-script.js"
             ]
         }
     ]
