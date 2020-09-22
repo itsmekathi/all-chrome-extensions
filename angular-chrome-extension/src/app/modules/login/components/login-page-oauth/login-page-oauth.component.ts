@@ -10,7 +10,7 @@ import { UserService } from '../../../../shared/services';
 })
 export class LoginPageOauthComponent implements OnInit {
   loginname = '';
-  redirectURI = chrome.identity.getRedirectURL() + 'auth';
+  redirectURI = chrome.identity.getRedirectURL('auth');
   isLoginInvalid = false;
   error: string;
 
